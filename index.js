@@ -1,6 +1,7 @@
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
+ * @license MIT
  * @module mdast:util:definitions
  * @fileoverview Get a definition in `node` by `identifier`.
  */
@@ -11,7 +12,7 @@
  * Dependencies.
  */
 
-var visit = require('mdast-util-visit');
+var visit = require('unist-util-visit');
 
 /**
  * Factory to get a node from the given definition-cache.

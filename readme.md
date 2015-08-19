@@ -1,4 +1,4 @@
-# mdast-util-definitions [![Build Status](https://img.shields.io/travis/wooorm/mdast-util-definitions.svg?style=flat)](https://travis-ci.org/wooorm/mdast-util-definitions) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast-util-definitions.svg?style=flat)](https://coveralls.io/r/wooorm/mdast-util-definitions?branch=master)
+# mdast-util-definitions [![Build Status](https://img.shields.io/travis/wooorm/mdast-util-definitions.svg)](https://travis-ci.org/wooorm/mdast-util-definitions) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/mdast-util-definitions.svg)](https://codecov.io/github/wooorm/mdast-util-definitions)
 
 Get a definition in `node` by `identifier`. Supports weird keys (like
 `__proto__` or `toString`).

@@ -6,9 +6,9 @@
  * Dependencies.
  */
 
-var definitions = require('./index.js');
-var mdast = require('mdast');
 var assert = require('assert');
+var mdast = require('mdast');
+var definitions = require('./index.js');
 
 /*
  * Tests.
