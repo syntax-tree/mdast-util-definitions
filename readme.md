@@ -34,7 +34,7 @@ getDefinition('foo');
 
 ## API
 
-### getDefinitionFactory(node): getDefinition
+### `getDefinitionFactory(node): getDefinition`
 
 Create a cache of all `definition`s in `node`.
 
@@ -44,7 +44,7 @@ Parameters:
 
 Returns: `Function` — See [`getDefinition`](#getdefinitionidentifier)
 
-### getDefinition(identifier)
+### `getDefinition(identifier)`
 
 Get a definition by `identifier`.
 
