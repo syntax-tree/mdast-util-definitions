@@ -1,6 +1,6 @@
 /**
  * @author Titus Wormer
- * @copyright 2015 Titus Wormer. All rights reserved.
+ * @copyright 2015-2016 Titus Wormer. All rights reserved.
  * @license MIT
  * @module mdast:util:definitions
  * @fileoverview Get a definition in `node` by `identifier`.
