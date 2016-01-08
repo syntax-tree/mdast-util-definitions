@@ -3,3 +3,5 @@
 components/
 coverage/
 node_modules/
+mdast-util-definitions.js
+mdast-util-definitions.min.js

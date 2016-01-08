@@ -9,3 +9,10 @@ node_js:
 - iojs
 sudo: false
 after_script: npm install codecov.io && cat ./coverage/lcov.info | codecov
+deploy:
+  provider: releases
+  api_key:
+    secure: YOrWEXR+59GMXpOZoToiMyEXWpxbB8HqvyXXWJz51KM+7z/AqcyY0dv6Rd8TlqRXY9zxEKATLsLZboTeRLT+LrK4GpJnqNKj4FqL470ejT9PkKw5XJ4GoEzttgH8pIfzmOQkCckhqnP/38e8g+z9RYZZ1SzLYUwIqBBfKZ0rirOCvzL0dtgDX+wW2/04cAdZqYWVW7xu8vaR5XfFu+5AoS43/Vsqgfp8NlXd8lCCTHmqzSkhGJSFIQjJMFpOEmNFKZBZRzDCGySgVqTYFy4m01OCGb8HU32sHOeT0cJ+WcelxfTXI0kGySXlLV8hVywzmZzPMwrITHD7zIfExyT+V5XBmrhZblW0/ndyMGgtDxkyBpwCKckaglkJm9kO8EvlvBODJuaJh3fkDzY1PjemG0LiIiKZiVQth4T4L6KaisTFaifskfSbCOCsH6dXfcalrPr6A9tOfpG34nGN0olXpgvIbSTfgLzcJ5VPWTgAxnePlX7MU/+z/pHFdht+3K5kyBcbsoXdpJcrRxanhcBb8C8YCuVqbd++H3ZIQU+oMck6Y2e00P7gLHlo8fK6ITYnQ9a/vzNuwcy2eiDmDhbMvMICnyEMck6MJpfpZKaFxZy7XPQo6jNtb7A8+ReSizDjpR2fep+QtnP19/wDQU+KJc3Fq8hsFHOVop20FkkxRDk=
+  file:
+    - "mdast-util-definitions.js"
+    - "mdast-util-definitions.min.js"
