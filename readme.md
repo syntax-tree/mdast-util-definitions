@@ -11,8 +11,7 @@ Get a definition in `node` by `identifier`. Supports weird keys (like
 npm install mdast-util-definitions
 ```
 
-**mdast-util-definitions** is also available for [bower](http://bower.io/#install-packages),
-[component](https://github.com/componentjs/component), [duo](http://duojs.org/#getting-started),
+**mdast-util-definitions** is also available for [component](https://github.com/componentjs/component), [duo](http://duojs.org/#getting-started),
 and for AMD, CommonJS, and globals ([uncompressed](mdast-util-definitions.js)
 and [compressed](mdast-util-definitions.min.js)).
 
