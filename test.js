@@ -1,12 +1,12 @@
 'use strict';
 
-/* eslint-env mocha */
+/* eslint-env node */
 
 /*
  * Dependencies.
  */
 
-var assert = require('assert');
+var test = require('tape');
 var remark = require('remark');
 var definitions = require('./index.js');
 
@@ -14,18 +14,24 @@ var definitions = require('./index.js');
  * Tests.
  */
 
-describe('mdast-util-definitions', function () {
-    it('should fail without node', function () {
-        assert.throws(function () {
+test('mdast-util-definitions', function (t) {
+    var getDefinition;
+    var ast;
+
+    t.throws(
+        function () {
             definitions();
-        }, /mdast-util-definitions expected node/);
-    });
+        },
+        /mdast-util-definitions expected node/,
+        'should fail without node'
+    );
 
-    it('should work', function () {
-        var ast = remark.parse('[example]: http://example.com "Example"');
-        var getDefinition = definitions(ast);
+    ast = remark.parse('[example]: http://example.com "Example"');
+    getDefinition = definitions(ast);
 
-        assert.deepEqual(getDefinition('example'), {
+    t.deepEqual(
+        getDefinition('example'),
+        {
             'type': 'definition',
             'identifier': 'example',
             'link': 'http://example.com',
@@ -41,16 +47,22 @@ describe('mdast-util-definitions', function () {
                 },
                 'indent': []
             }
-        });
+        },
+        'should return a definition'
+    );
 
-        assert.deepEqual(getDefinition('foo'), null);
-    });
+    t.equal(
+        getDefinition('foo'),
+        null,
+        'should return null when not found'
+    );
 
-    it('should work on weird identifiers', function () {
-        var ast = remark.parse('[__proto__]: http://proto.com "Proto"');
-        var getDefinition = definitions(ast);
+    ast = remark.parse('[__proto__]: http://proto.com "Proto"');
+    getDefinition = definitions(ast);
 
-        assert.deepEqual(getDefinition('__proto__'), {
+    t.deepEqual(
+        getDefinition('__proto__'),
+        {
             'type': 'definition',
             'identifier': '__proto__',
             'link': 'http://proto.com',
@@ -66,8 +78,15 @@ describe('mdast-util-definitions', function () {
                 },
                 'indent': []
             }
-        });
+        },
+        'should work on weird identifiers'
+    );
 
-        assert.deepEqual(getDefinition('toString'), null);
-    });
+    t.deepEqual(
+        getDefinition('toString'),
+        null,
+        'should work on weird identifiers when not found'
+    );
+
+    t.end();
 });
