@@ -7,7 +7,7 @@
  */
 
 var assert = require('assert');
-var mdast = require('mdast');
+var remark = require('remark');
 var definitions = require('./index.js');
 
 /*
@@ -22,7 +22,7 @@ describe('mdast-util-definitions', function () {
     });
 
     it('should work', function () {
-        var ast = mdast.parse('[example]: http://example.com "Example"');
+        var ast = remark.parse('[example]: http://example.com "Example"');
         var getDefinition = definitions(ast);
 
         assert.deepEqual(getDefinition('example'), {
@@ -47,7 +47,7 @@ describe('mdast-util-definitions', function () {
     });
 
     it('should work on weird identifiers', function () {
-        var ast = mdast.parse('[__proto__]: http://proto.com "Proto"');
+        var ast = remark.parse('[__proto__]: http://proto.com "Proto"');
         var getDefinition = definitions(ast);
 
         assert.deepEqual(getDefinition('__proto__'), {

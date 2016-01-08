@@ -74,7 +74,7 @@ function gather(node) {
  * Supports weird keys (like `__proto__`).
  *
  * @example
- *   var ast = mdast.parse('[example]: http://example.com "Example"');
+ *   var ast = remark.parse('[example]: http://example.com "Example"');
  *   var getDefinition = getDefinitionFactory(ast);
  *   getDefinition('example');
  *   // {type: 'definition', 'title': 'Example', ...}

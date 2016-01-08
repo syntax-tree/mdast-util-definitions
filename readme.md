@@ -19,10 +19,10 @@ and [compressed](mdast-util-definitions.min.js)).
 ## Usage
 
 ```js
-var mdast = require('mdast');
+var remark = require('remark');
 var definitions = require('mdast-util-definitions');
 
-var ast = mdast.parse('[example]: http://example.com "Example"');
+var ast = remark.parse('[example]: http://example.com "Example"');
 
 var getDefinition = definitions(ast);
 
@@ -57,4 +57,4 @@ Returns: `Node?` — Definition, if found.
 
 ## License
 
-[MIT](LICENSE) @ [Titus Wormer](http://wooorm.com)
+[MIT](LICENSE) [@](https://github.com/) [Titus Wormer](http://wooorm.com)
