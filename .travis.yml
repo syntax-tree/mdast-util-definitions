@@ -22,3 +22,5 @@ deploy:
     file:
       - "mdast-util-definitions.js"
       - "mdast-util-definitions.min.js"
+    on:
+      tags: true
