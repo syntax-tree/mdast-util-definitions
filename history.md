@@ -2,6 +2,13 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+1.1.1 / 2016-06-13
+==================
+
+*   Remove support for Duo ([`970b24f`](https://github.com/wooorm/mdast-util-definitions/commit/970b24f))
+*   Update `readme.md` ([`e997528`](https://github.com/wooorm/mdast-util-definitions/commit/e997528))
+*   Update dev-dependencies ([`0aca600`](https://github.com/wooorm/mdast-util-definitions/commit/0aca600))
+
 1.1.0 / 2016-01-08
 ==================
 
