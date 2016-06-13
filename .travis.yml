@@ -1,12 +1,11 @@
 language: node_js
 script: npm run-script test
 node_js:
-- '0.10'
 - '0.11'
 - '0.12'
 - '4.0'
 - '5.0'
-- iojs
+- '6.0'
 sudo: false
 after_success:
 - bash <(curl -s https://codecov.io/bash)
@@ -17,6 +16,7 @@ deploy:
       secure: oTTlyaZMYSQBFbtpzcOSTHJAI1zyisnY07HSMPm1BjnMqQUoDj0/1FoABzejCJw3wvdtGww3dykbvYrPolVHaiR8yesqG45zbcyY//32ufhb+ED3tG9jKLZlEvjkanoa+QECSSWle/UllFb7KObdTmnGXXQpTYFvW10oLwK9TL3Q6iSmhCUnM6pEJQu60qoy5T2RQEcCcUauiHL0jZJiYvY0IdHHFC9xl5kO/YiieZr9KmjquNfCavpz3xc+NREsmNQSC42DL9krSmGYJTQW5uZFJ01FR69zzW96/TfnWEJ23oGQ6f1kVRPT8BR7LR+0Uj5lODjVfLRCB5E6NRRXLmF1s9qx/pOUVYRBmR5MMwS0H74RHPzhsZZhrKwaMr5FwA2Zj+xLcelqdafrwTdb4+1yHtWVg2cmsG80La9sVME0WtJbD6DmWpIHbKf0hOFEuhJgYrq54OxuTAgjmzjKKJIydfbVhvQ7t5jwrJSs9Em2OtTKgRUwalIMWkNKgkUn7GdxSlxQ9kSLRVEGKKC+BpR7x3KhNruAjDmxpCxoSY9FfX3uV4deO51gERvLp8oIo/DP9U16I/UVgdjWmMMg9ttWE2Y1HGzA00Vh4gaszaHpkhiwBFsgK5a9f9MXUl3Z9CKfaePs/EjqJG/+erXLgwCpzH486H4k1Q2Ucq5n7E0=
     on:
       tags: true
+      node: '6.0'
   - provider: releases
     api_key:
       secure: YOrWEXR+59GMXpOZoToiMyEXWpxbB8HqvyXXWJz51KM+7z/AqcyY0dv6Rd8TlqRXY9zxEKATLsLZboTeRLT+LrK4GpJnqNKj4FqL470ejT9PkKw5XJ4GoEzttgH8pIfzmOQkCckhqnP/38e8g+z9RYZZ1SzLYUwIqBBfKZ0rirOCvzL0dtgDX+wW2/04cAdZqYWVW7xu8vaR5XfFu+5AoS43/Vsqgfp8NlXd8lCCTHmqzSkhGJSFIQjJMFpOEmNFKZBZRzDCGySgVqTYFy4m01OCGb8HU32sHOeT0cJ+WcelxfTXI0kGySXlLV8hVywzmZzPMwrITHD7zIfExyT+V5XBmrhZblW0/ndyMGgtDxkyBpwCKckaglkJm9kO8EvlvBODJuaJh3fkDzY1PjemG0LiIiKZiVQth4T4L6KaisTFaifskfSbCOCsH6dXfcalrPr6A9tOfpG34nGN0olXpgvIbSTfgLzcJ5VPWTgAxnePlX7MU/+z/pHFdht+3K5kyBcbsoXdpJcrRxanhcBb8C8YCuVqbd++H3ZIQU+oMck6Y2e00P7gLHlo8fK6ITYnQ9a/vzNuwcy2eiDmDhbMvMICnyEMck6MJpfpZKaFxZy7XPQo6jNtb7A8+ReSizDjpR2fep+QtnP19/wDQU+KJc3Fq8hsFHOVop20FkkxRDk=
@@ -25,3 +25,4 @@ deploy:
       - "mdast-util-definitions.min.js"
     on:
       tags: true
+      node: '6.0'
