@@ -1,19 +1,22 @@
-# mdast-util-definitions [![Build Status](https://img.shields.io/travis/wooorm/mdast-util-definitions.svg)](https://travis-ci.org/wooorm/mdast-util-definitions) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/mdast-util-definitions.svg)](https://codecov.io/github/wooorm/mdast-util-definitions)
+# mdast-util-definitions [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
 
-Get a definition in `node` by `identifier`. Supports weird keys (like
-`__proto__` or `toString`).
+<!--lint disable list-item-spacing heading-increment list-item-indent-->
+
+<!--lint disable no-duplicate-headings-->
+
+Get definitions in [MDAST][] nodes by `identifier`.  Supports funky
+keys, like `__proto__` or `toString`.
 
 ## Installation
 
-[npm](https://docs.npmjs.com/cli/install):
+[npm][]:
 
 ```bash
 npm install mdast-util-definitions
 ```
 
-**mdast-util-definitions** is also available for [duo](http://duojs.org/#getting-started)
-and as an AMD, CommonJS, and globals module, ([uncompressed and
-compressed](https://github.com/wooorm/mdast-util-definitions/releases)).
+**mdast-util-definitions** is also available as an AMD, CommonJS, and
+globals module, [uncompressed and compressed][releases].
 
 ## Usage
 
@@ -23,37 +26,67 @@ var definitions = require('mdast-util-definitions');
 
 var ast = remark().parse('[example]: http://example.com "Example"');
 
-var getDefinition = definitions(ast);
+var definition = definitions(ast);
 
-getDefinition('example');
+definition('example');
 // {type: 'definition', 'title': 'Example', ...}
 
-getDefinition('foo');
+definition('foo');
 // null
 ```
 
 ## API
 
-### `getDefinitionFactory(node): getDefinition`
+### `definitions(node)`
 
 Create a cache of all `definition`s in `node`.
 
-Parameters:
+###### Parameters
 
-*   `node` (`Node`) — (Grand)parent of definitions.
+*   `node` ([`Node`][node]) — Ancestor of definitions.
 
-Returns: `Function` — See [`getDefinition`](#getdefinitionidentifier)
+###### Returns
 
-### `getDefinition(identifier)`
+[`Function`][definition]
 
-Get a definition by `identifier`.
+### `definition(identifier)`
 
-Parameters:
+###### Parameters
 
 *   `identifier` (`string`) — Identifier of definition.
 
-Returns: `Node?` — Definition, if found.
+###### Returns
+
+[`Node?`][node] — Definition, if found.
 
 ## License
 
-[MIT](LICENSE) [@](https://github.com/) [Titus Wormer](http://wooorm.com)
+[MIT][license] © [Titus Wormer][author]
+
+<!-- Definitions -->
+
+[build-badge]: https://img.shields.io/travis/wooorm/mdast-util-definitions.svg
+
+[build-status]: https://travis-ci.org/wooorm/mdast-util-definitions
+
+[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/mdast-util-definitions.svg
+
+[coverage-status]: https://codecov.io/github/wooorm/mdast-util-definitions
+
+[chat-badge]: https://img.shields.io/gitter/room/wooorm/remark.svg
+
+[chat]: https://gitter.im/wooorm/remark
+
+[releases]: https://github.com/wooorm/mdast-util-definitions/releases
+
+[license]: LICENSE
+
+[author]: http://wooorm.com
+
+[npm]: https://docs.npmjs.com/cli/install
+
+[mdast]: https://github.com/wooorm/mdast
+
+[node]: https://github.com/wooorm/mdast#node
+
+[definition]: #definitionidentifier
