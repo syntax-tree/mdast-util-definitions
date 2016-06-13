@@ -21,7 +21,7 @@ compressed](https://github.com/wooorm/mdast-util-definitions/releases)).
 var remark = require('remark');
 var definitions = require('mdast-util-definitions');
 
-var ast = remark.parse('[example]: http://example.com "Example"');
+var ast = remark().parse('[example]: http://example.com "Example"');
 
 var getDefinition = definitions(ast);
 

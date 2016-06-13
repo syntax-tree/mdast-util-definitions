@@ -26,7 +26,7 @@ test('mdast-util-definitions', function (t) {
         'should fail without node'
     );
 
-    ast = remark.parse('[example]: http://example.com "Example"');
+    ast = remark().parse('[example]: http://example.com "Example"');
     getDefinition = definitions(ast);
 
     t.deepEqual(
@@ -34,16 +34,18 @@ test('mdast-util-definitions', function (t) {
         {
             'type': 'definition',
             'identifier': 'example',
-            'link': 'http://example.com',
+            'url': 'http://example.com',
             'title': 'Example',
             'position': {
                 'start': {
                     'column': 1,
-                    'line': 1
+                    'line': 1,
+                    'offset': 0
                 },
                 'end': {
                     'column': 40,
-                    'line': 1
+                    'line': 1,
+                    'offset': 39
                 },
                 'indent': []
             }
@@ -57,7 +59,7 @@ test('mdast-util-definitions', function (t) {
         'should return null when not found'
     );
 
-    ast = remark.parse('[__proto__]: http://proto.com "Proto"');
+    ast = remark().parse('[__proto__]: http://proto.com "Proto"');
     getDefinition = definitions(ast);
 
     t.deepEqual(
@@ -65,16 +67,18 @@ test('mdast-util-definitions', function (t) {
         {
             'type': 'definition',
             'identifier': '__proto__',
-            'link': 'http://proto.com',
+            'url': 'http://proto.com',
             'title': 'Proto',
             'position': {
                 'start': {
                     'column': 1,
-                    'line': 1
+                    'line': 1,
+                    'offset': 0
                 },
                 'end': {
                     'column': 38,
-                    'line': 1
+                    'line': 1,
+                    'offset': 37
                 },
                 'indent': []
             }
