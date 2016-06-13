@@ -1,6 +1,5 @@
 {
   "excludeFiles": [
-    "components/",
     "coverage/",
     "node_modules/",
     "mdast-util-definitions.js",
