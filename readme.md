@@ -1,9 +1,5 @@
 # mdast-util-definitions [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
 
-<!--lint disable list-item-spacing heading-increment list-item-indent-->
-
-<!--lint disable no-duplicate-headings-->
-
 Get definitions in [MDAST][] nodes by `identifier`.  Supports funky
 keys, like `__proto__` or `toString`.
 
@@ -14,9 +10,6 @@ keys, like `__proto__` or `toString`.
 ```bash
 npm install mdast-util-definitions
 ```
-
-**mdast-util-definitions** is also available as an AMD, CommonJS, and
-globals module, [uncompressed and compressed][releases].
 
 ## Usage
 
@@ -76,8 +69,6 @@ Create a cache of all `definition`s in `node`.
 [chat-badge]: https://img.shields.io/gitter/room/wooorm/remark.svg
 
 [chat]: https://gitter.im/wooorm/remark
-
-[releases]: https://github.com/wooorm/mdast-util-definitions/releases
 
 [license]: LICENSE
 
