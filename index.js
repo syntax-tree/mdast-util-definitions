@@ -1,28 +1,35 @@
 'use strict';
 
 var visit = require('unist-util-visit');
+var has = require('has');
 
 module.exports = getDefinitionFactory;
 
 /* Get a definition in `node` by `identifier`. */
-function getDefinitionFactory(node) {
-  return getterFactory(gather(node));
+function getDefinitionFactory(node, options) {
+  return getterFactory(gather(node, options));
 }
 
 /* Gather all definitions in `node` */
-function gather(node) {
+function gather(node, options) {
   var cache = {};
 
   if (!node || !node.type) {
     throw new Error('mdast-util-definitions expected node');
   }
 
-  visit(node, 'definition', check);
+  visit(node, 'definition', options && options.commonmark ? commonmark : normal);
 
   return cache;
 
-  /* Add `definition` to `cache` if it has an identifier. */
-  function check(definition) {
+  function commonmark(definition) {
+    var id = normalise(definition.identifier);
+    if (!has(cache, id)) {
+      cache[id] = definition;
+    }
+  }
+
+  function normal(definition) {
     cache[normalise(definition.identifier)] = definition;
   }
 }
@@ -33,7 +40,8 @@ function getterFactory(cache) {
 
   /* Get a node from the bound definition-cache. */
   function getter(identifier) {
-    return (identifier && cache[normalise(identifier)]) || null;
+    var id = identifier && normalise(identifier);
+    return id && has(cache, id) ? cache[id] : null;
   }
 }
 

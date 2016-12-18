@@ -30,13 +30,15 @@ definition('foo');
 
 ## API
 
-### `definitions(node)`
+### `definitions(node[, options])`
 
-Create a cache of all `definition`s in `node`.
+Create a cache of all `definition`s in [`node`][node].
 
-###### Parameters
+###### `options`
 
-*   `node` ([`Node`][node]) — Ancestor of definitions.
+*   `commonmark` (`boolean`, default: false) — Turn on to use CommonMark
+    precedence: ignore later found definitions for duplicate definitions.
+    The default behaviour is to prefer the last found definition.
 
 ###### Returns
 

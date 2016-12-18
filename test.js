@@ -66,5 +66,22 @@ test('mdast-util-definitions', function (t) {
     'should work on weird identifiers when not found'
   );
 
+  tree = remark().parse([
+    '[example]: http://one.com',
+    '[example]: http://two.com'
+  ].join('\n'));
+
+  t.deepEqual(
+    definitions(tree)('example').url,
+    'http://two.com',
+    'should prefer the last of duplicate definitions by default'
+  );
+
+  t.deepEqual(
+    definitions(tree, {commonmark: true})('example').url,
+    'http://one.com',
+    'should prefer the first of duplicate definitions in commonmark mode'
+  );
+
   t.end();
 });
