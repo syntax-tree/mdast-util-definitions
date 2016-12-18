@@ -1,9 +1,7 @@
 'use strict';
 
-/* Dependencies. */
 var visit = require('unist-util-visit');
 
-/* Expose. */
 module.exports = getDefinitionFactory;
 
 /* Get a definition in `node` by `identifier`. */
@@ -23,9 +21,9 @@ function gather(node) {
 
   return cache;
 
-  /* Add `definition` to `cache` if it has an identifier.   */
+  /* Add `definition` to `cache` if it has an identifier. */
   function check(definition) {
-    cache[definition.identifier.toUpperCase()] = definition;
+    cache[normalise(definition.identifier)] = definition;
   }
 }
 
@@ -35,6 +33,10 @@ function getterFactory(cache) {
 
   /* Get a node from the bound definition-cache. */
   function getter(identifier) {
-    return (identifier && cache[identifier.toUpperCase()]) || null;
+    return (identifier && cache[normalise(identifier)]) || null;
   }
+}
+
+function normalise(identifier) {
+  return identifier.toUpperCase();
 }
