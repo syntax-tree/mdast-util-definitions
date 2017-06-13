@@ -34,11 +34,11 @@ definition('foo');
 
 Create a cache of all `definition`s in [`node`][node].
 
-###### `options`
+###### `options.commonmark`
 
-*   `commonmark` (`boolean`, default: false) — Turn on to use CommonMark
-    precedence: ignore later found definitions for duplicate definitions.
-    The default behaviour is to prefer the last found definition.
+`boolean`, default: false — Turn on to use CommonMark precedence: ignore
+later found definitions for duplicate definitions.  The default behaviour
+is to prefer the last found definition.
 
 ###### Returns
 
