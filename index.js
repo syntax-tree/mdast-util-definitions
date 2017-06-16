@@ -1,9 +1,10 @@
 'use strict';
 
 var visit = require('unist-util-visit');
-var has = require('has');
 
 module.exports = getDefinitionFactory;
+
+var own = {}.hasOwnProperty;
 
 /* Get a definition in `node` by `identifier`. */
 function getDefinitionFactory(node, options) {
@@ -24,7 +25,7 @@ function gather(node, options) {
 
   function commonmark(definition) {
     var id = normalise(definition.identifier);
-    if (!has(cache, id)) {
+    if (!own.call(cache, id)) {
       cache[id] = definition;
     }
   }
@@ -41,7 +42,7 @@ function getterFactory(cache) {
   /* Get a node from the bound definition-cache. */
   function getter(identifier) {
     var id = identifier && normalise(identifier);
-    return id && has(cache, id) ? cache[id] : null;
+    return id && own.call(cache, id) ? cache[id] : null;
   }
 }
 
