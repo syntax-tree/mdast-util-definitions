@@ -12,10 +12,7 @@
     "find",
     "cache"
   ],
-  "dependencies": {
-    "unist-util-visit": "^1.0.0"
-  },
-  "repository": "https://github.com/syntax-tree/mdast-util-definitions",
+  "repository": "syntax-tree/mdast-util-definitions",
   "bugs": "https://github.com/syntax-tree/mdast-util-definitions/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "contributors": [
@@ -24,6 +21,9 @@
   "files": [
     "index.js"
   ],
+  "dependencies": {
+    "unist-util-visit": "^1.0.0"
+  },
   "devDependencies": {
     "browserify": "^14.0.0",
     "esmangle": "^1.0.0",
