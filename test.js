@@ -2,7 +2,7 @@
 
 var test = require('tape');
 var remark = require('remark');
-var definitions = require('./index.js');
+var definitions = require('.');
 
 test('mdast-util-definitions', function (t) {
   var getDefinition;
