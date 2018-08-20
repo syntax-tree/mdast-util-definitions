@@ -14,18 +14,18 @@ npm install mdast-util-definitions
 ## Usage
 
 ```js
-var remark = require('remark');
-var definitions = require('mdast-util-definitions');
+var remark = require('remark')
+var definitions = require('mdast-util-definitions')
 
-var ast = remark().parse('[example]: http://example.com "Example"');
+var ast = remark().parse('[example]: http://example.com "Example"')
 
-var definition = definitions(ast);
+var definition = definitions(ast)
 
-definition('example');
-// {type: 'definition', 'title': 'Example', ...}
+definition('example')
+// => {type: 'definition', 'title': 'Example', ...}
 
-definition('foo');
-// null
+definition('foo')
+// => null
 ```
 
 ## API

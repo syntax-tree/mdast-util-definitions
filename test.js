@@ -1,23 +1,23 @@
-'use strict';
+'use strict'
 
-var test = require('tape');
-var remark = require('remark');
-var definitions = require('.');
+var test = require('tape')
+var remark = require('remark')
+var definitions = require('.')
 
-test('mdast-util-definitions', function (t) {
-  var getDefinition;
-  var tree;
+test('mdast-util-definitions', function(t) {
+  var getDefinition
+  var tree
 
   t.throws(
-    function () {
-      definitions();
+    function() {
+      definitions()
     },
     /mdast-util-definitions expected node/,
     'should fail without node'
-  );
+  )
 
-  tree = remark().parse('[example]: http://example.com "Example"');
-  getDefinition = definitions(tree);
+  tree = remark().parse('[example]: http://example.com "Example"')
+  getDefinition = definitions(tree)
 
   t.deepEqual(
     getDefinition('example'),
@@ -33,16 +33,12 @@ test('mdast-util-definitions', function (t) {
       }
     },
     'should return a definition'
-  );
+  )
 
-  t.equal(
-    getDefinition('foo'),
-    null,
-    'should return null when not found'
-  );
+  t.equal(getDefinition('foo'), null, 'should return null when not found')
 
-  tree = remark().parse('[__proto__]: http://proto.com "Proto"');
-  getDefinition = definitions(tree);
+  tree = remark().parse('[__proto__]: http://proto.com "Proto"')
+  getDefinition = definitions(tree)
 
   t.deepEqual(
     getDefinition('__proto__'),
@@ -58,30 +54,27 @@ test('mdast-util-definitions', function (t) {
       }
     },
     'should work on weird identifiers'
-  );
+  )
 
   t.deepEqual(
     getDefinition('toString'),
     null,
     'should work on weird identifiers when not found'
-  );
+  )
 
-  tree = remark().parse([
-    '[example]: http://one.com',
-    '[example]: http://two.com'
-  ].join('\n'));
+  tree = remark().parse('[example]: http://one.com\n[example]: http://two.com')
 
   t.deepEqual(
     definitions(tree)('example').url,
     'http://two.com',
     'should prefer the last of duplicate definitions by default'
-  );
+  )
 
   t.deepEqual(
     definitions(tree, {commonmark: true})('example').url,
     'http://one.com',
     'should prefer the first of duplicate definitions in commonmark mode'
-  );
+  )
 
-  t.end();
-});
+  t.end()
+})
