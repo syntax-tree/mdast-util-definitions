@@ -6,12 +6,12 @@ module.exports = getDefinitionFactory
 
 var own = {}.hasOwnProperty
 
-/* Get a definition in `node` by `identifier`. */
+// Get a definition in `node` by `identifier`.
 function getDefinitionFactory(node, options) {
   return getterFactory(gather(node, options))
 }
 
-/* Gather all definitions in `node` */
+// Gather all definitions in `node`
 function gather(node, options) {
   var cache = {}
 
@@ -35,11 +35,11 @@ function gather(node, options) {
   }
 }
 
-/* Factory to get a node from the given definition-cache. */
+// Factory to get a node from the given definition-cache.
 function getterFactory(cache) {
   return getter
 
-  /* Get a node from the bound definition-cache. */
+  // Get a node from the bound definition-cache.
   function getter(identifier) {
     var id = identifier && normalise(identifier)
     return id && own.call(cache, id) ? cache[id] : null
