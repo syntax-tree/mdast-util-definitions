@@ -24,6 +24,7 @@ test('mdast-util-definitions', function(t) {
     {
       type: 'definition',
       identifier: 'example',
+      label: 'example',
       url: 'https://example.com',
       title: 'Example',
       position: {
@@ -45,6 +46,7 @@ test('mdast-util-definitions', function(t) {
     {
       type: 'definition',
       identifier: '__proto__',
+      label: '__proto__',
       url: 'https://proto.com',
       title: 'Proto',
       position: {
