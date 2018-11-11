@@ -1,4 +1,4 @@
-# mdast-util-definitions [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
+# mdast-util-definitions [![Build][build-badge]][build] [![Coverage][coverage-badge]][coverage] [![Downloads][downloads-badge]][downloads] [![Chat][chat-badge]][chat]
 
 Get definitions in [MDAST][] nodes by `identifier`.  Supports funky
 keys, like `__proto__` or `toString`.
@@ -70,15 +70,19 @@ repository, organisation, or community you agree to abide by its terms.
 
 [build-badge]: https://img.shields.io/travis/syntax-tree/mdast-util-definitions.svg
 
-[build-status]: https://travis-ci.org/syntax-tree/mdast-util-definitions
+[build]: https://travis-ci.org/syntax-tree/mdast-util-definitions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/syntax-tree/mdast-util-definitions.svg
 
-[coverage-status]: https://codecov.io/github/syntax-tree/mdast-util-definitions
+[coverage]: https://codecov.io/github/syntax-tree/mdast-util-definitions
 
-[chat-badge]: https://img.shields.io/gitter/room/wooorm/remark.svg
+[downloads-badge]: https://img.shields.io/npm/dm/mdast-util-definitions.svg
 
-[chat]: https://gitter.im/wooorm/remark
+[downloads]: https://www.npmjs.com/package/mdast-util-definitions
+
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+
+[chat]: https://spectrum.chat/unified/remark
 
 [license]: license
 
