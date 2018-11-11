@@ -1,6 +1,6 @@
 # mdast-util-definitions [![Build][build-badge]][build] [![Coverage][coverage-badge]][coverage] [![Downloads][downloads-badge]][downloads] [![Chat][chat-badge]][chat]
 
-Get definitions in [MDAST][] nodes by `identifier`.  Supports funky
+Get definitions in [mdast][] nodes by `identifier`.  Supports funky
 keys, like `__proto__` or `toString`.
 
 ## Installation
