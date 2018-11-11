@@ -16,7 +16,7 @@ test('mdast-util-definitions', function(t) {
     'should fail without node'
   )
 
-  tree = remark().parse('[example]: http://example.com "Example"')
+  tree = remark().parse('[example]: https://example.com "Example"')
   getDefinition = definitions(tree)
 
   t.deepEqual(
@@ -24,11 +24,11 @@ test('mdast-util-definitions', function(t) {
     {
       type: 'definition',
       identifier: 'example',
-      url: 'http://example.com',
+      url: 'https://example.com',
       title: 'Example',
       position: {
         start: {column: 1, line: 1, offset: 0},
-        end: {column: 40, line: 1, offset: 39},
+        end: {column: 41, line: 1, offset: 40},
         indent: []
       }
     },
@@ -37,7 +37,7 @@ test('mdast-util-definitions', function(t) {
 
   t.equal(getDefinition('foo'), null, 'should return null when not found')
 
-  tree = remark().parse('[__proto__]: http://proto.com "Proto"')
+  tree = remark().parse('[__proto__]: https://proto.com "Proto"')
   getDefinition = definitions(tree)
 
   t.deepEqual(
@@ -45,11 +45,11 @@ test('mdast-util-definitions', function(t) {
     {
       type: 'definition',
       identifier: '__proto__',
-      url: 'http://proto.com',
+      url: 'https://proto.com',
       title: 'Proto',
       position: {
         start: {column: 1, line: 1, offset: 0},
-        end: {column: 38, line: 1, offset: 37},
+        end: {column: 39, line: 1, offset: 38},
         indent: []
       }
     },
@@ -62,17 +62,19 @@ test('mdast-util-definitions', function(t) {
     'should work on weird identifiers when not found'
   )
 
-  tree = remark().parse('[example]: http://one.com\n[example]: http://two.com')
+  tree = remark().parse(
+    '[example]: https://one.com\n[example]: https://two.com'
+  )
 
   t.deepEqual(
     definitions(tree)('example').url,
-    'http://two.com',
+    'https://two.com',
     'should prefer the last of duplicate definitions by default'
   )
 
   t.deepEqual(
     definitions(tree, {commonmark: true})('example').url,
-    'http://one.com',
+    'https://one.com',
     'should prefer the first of duplicate definitions in commonmark mode'
   )
 

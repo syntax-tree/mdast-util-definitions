@@ -17,7 +17,7 @@ npm install mdast-util-definitions
 var remark = require('remark')
 var definitions = require('mdast-util-definitions')
 
-var ast = remark().parse('[example]: http://example.com "Example"')
+var ast = remark().parse('[example]: https://example.com "Example"')
 
 var definition = definitions(ast)
 
@@ -82,7 +82,7 @@ repository, organisation, or community you agree to abide by its terms.
 
 [license]: license
 
-[author]: http://wooorm.com
+[author]: https://wooorm.com
 
 [npm]: https://docs.npmjs.com/cli/install
 
