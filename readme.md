@@ -1,13 +1,22 @@
-# mdast-util-definitions [![Build][build-badge]][build] [![Coverage][coverage-badge]][coverage] [![Downloads][downloads-badge]][downloads] [![Chat][chat-badge]][chat]
+# mdast-util-definitions
 
-Get definitions in [mdast][] nodes by `identifier`.  Supports funky
-keys, like `__proto__` or `toString`.
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
+[![Sponsors][sponsors-badge]][collective]
+[![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-## Installation
+[**mdast**][mdast] utility to get definitions by `identifier`.
+
+Supports funky keys, like `__proto__` or `toString`.
+
+## Install
 
 [npm][]:
 
-```bash
+```sh
 npm install mdast-util-definitions
 ```
 
@@ -32,35 +41,37 @@ definition('foo')
 
 ### `definitions(node[, options])`
 
-Create a cache of all `definition`s in [`node`][node].
+Create a cache of all [definition][]s in [`node`][node].
 
 ###### `options.commonmark`
 
 `boolean`, default: false — Turn on to use CommonMark precedence: ignore
-later found definitions for duplicate definitions.  The default behaviour
-is to prefer the last found definition.
+definitions found later for duplicate definitions.
+The default behaviour is to prefer the last found definition.
 
 ###### Returns
 
-[`Function`][definition]
+[`Function`][fn-definition]
 
 ### `definition(identifier)`
 
 ###### Parameters
 
-*   `identifier` (`string`) — Identifier of definition.
+*   `identifier` (`string`) — [Identifier][] of [definition][].
 
 ###### Returns
 
-[`Node?`][node] — Definition, if found.
+[`Node?`][node] — [Definition][], if found.
 
 ## Contribute
 
-See [`contributing.md` in `syntax-tree/mdast`][contributing] for ways to get
+See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
 started.
+See [`support.md`][support] for ways to get help.
 
-This organisation has a [Code of Conduct][coc].  By interacting with this
-repository, organisation, or community you agree to abide by its terms.
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
 
 ## License
 
@@ -80,9 +91,19 @@ repository, organisation, or community you agree to abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/mdast-util-definitions
 
+[size-badge]: https://img.shields.io/bundlephobia/minzip/mdast-util-definitions.svg
+
+[size]: https://bundlephobia.com/result?p=mdast-util-definitions
+
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
+
 [chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 
-[chat]: https://spectrum.chat/unified/remark
+[chat]: https://spectrum.chat/unified/syntax-tree
 
 [license]: license
 
@@ -90,12 +111,18 @@ repository, organisation, or community you agree to abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[contributing]: https://github.com/syntax-tree/.github/blob/master/contributing.md
+
+[support]: https://github.com/syntax-tree/.github/blob/master/support.md
+
+[coc]: https://github.com/syntax-tree/.github/blob/master/code-of-conduct.md
+
 [mdast]: https://github.com/syntax-tree/mdast
 
 [node]: https://github.com/syntax-tree/unist#node
 
-[definition]: #definitionidentifier
+[fn-definition]: #definitionidentifier
 
-[contributing]: https://github.com/syntax-tree/mdast/blob/master/contributing.md
+[definition]: https://github.com/syntax-tree/mdast#definition
 
-[coc]: https://github.com/syntax-tree/mdast/blob/master/code-of-conduct.md
+[identifier]: https://github.com/syntax-tree/mdast#association
