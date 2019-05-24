@@ -1,6 +1,6 @@
 {
   "name": "mdast-util-definitions",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Find definition nodes in mdast nodes",
   "license": "MIT",
   "keywords": [
