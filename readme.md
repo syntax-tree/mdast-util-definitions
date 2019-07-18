@@ -63,6 +63,13 @@ The default behaviour is to prefer the last found definition.
 
 [`Node?`][node] — [Definition][], if found.
 
+## Security
+
+Use of `mdast-util-definitions` does not involve [**hast**][hast] or user
+content so there are no openings for [cross-site scripting (XSS)][xss] attacks.
+
+Additionally, safe guards are in place to protect against prototype poisoning.
+
 ## Contribute
 
 See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
@@ -126,3 +133,7 @@ abide by its terms.
 [definition]: https://github.com/syntax-tree/mdast#definition
 
 [identifier]: https://github.com/syntax-tree/mdast#association
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[hast]: https://github.com/syntax-tree/hast

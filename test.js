@@ -58,6 +58,9 @@ test('mdast-util-definitions', function(t) {
     'should work on weird identifiers'
   )
 
+  /* eslint-disable-next-line no-use-extend-native/no-use-extend-native */
+  t.equal({}.type, undefined, 'should not polute the prototype')
+
   t.deepEqual(
     getDefinition('toString'),
     null,
