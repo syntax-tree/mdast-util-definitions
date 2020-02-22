@@ -1,12 +1,16 @@
 {
   "name": "mdast-util-definitions",
   "version": "2.0.0",
-  "description": "Find definition nodes in mdast nodes",
+  "description": "mdast utility to find definition nodes in a tree",
   "license": "MIT",
   "keywords": [
+    "unist",
     "mdast",
-    "remark",
+    "mdast-util",
+    "util",
+    "utility",
     "markdown",
+    "tree",
     "node",
     "definition",
     "find",
