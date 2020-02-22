@@ -20,7 +20,7 @@ Supports funky keys, like `__proto__` or `toString`.
 npm install mdast-util-definitions
 ```
 
-## Usage
+## Use
 
 ```js
 var remark = require('remark')
@@ -45,9 +45,9 @@ Create a cache of all [definition][]s in [`node`][node].
 
 ###### `options.commonmark`
 
-`boolean`, default: false — Turn on to use CommonMark precedence: ignore
-definitions found later for duplicate definitions.
-The default behaviour is to prefer the last found definition.
+`boolean`, default: false — Turn on (`true`) to use CommonMark precedence:
+ignore definitions found later for duplicate definitions.
+The default behavior is to prefer the last found definition.
 
 ###### Returns
 
@@ -76,8 +76,8 @@ See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
 started.
 See [`support.md`][support] for ways to get help.
 
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
@@ -108,7 +108,7 @@ abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[chat-badge]: https://img.shields.io/badge/chat-spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/syntax-tree
 
