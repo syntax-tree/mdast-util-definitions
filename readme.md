@@ -70,6 +70,11 @@ content so there are no openings for [cross-site scripting (XSS)][xss] attacks.
 
 Additionally, safe guards are in place to protect against prototype poisoning.
 
+## Related
+
+*   [`unist-util-index`](https://github.com/syntax-tree/unist-util-index)
+    — index property values or computed keys to nodes
+
 ## Contribute
 
 See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
