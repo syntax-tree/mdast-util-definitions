@@ -4,12 +4,12 @@ var test = require('tape')
 var remark = require('remark')
 var definitions = require('.')
 
-test('mdast-util-definitions', function(t) {
+test('mdast-util-definitions', function (t) {
   var getDefinition
   var tree
 
   t.throws(
-    function() {
+    function () {
       definitions()
     },
     /mdast-util-definitions expected node/,
