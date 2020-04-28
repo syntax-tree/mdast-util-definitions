@@ -30,20 +30,20 @@
     "index.js"
   ],
   "dependencies": {
-    "@types/mdast": "^3.0.3",
+    "@types/mdast": "^3.0.0",
     "unist-util-visit": "^2.0.0"
   },
   "devDependencies": {
     "browserify": "^16.0.0",
-    "dtslint": "^3.4.2",
+    "dtslint": "^3.0.0",
     "nyc": "^15.0.0",
     "prettier": "^2.0.5",
     "remark": "^12.0.0",
     "remark-cli": "^8.0.0",
     "remark-preset-wooorm": "^7.0.0",
-    "tape": "^4.0.0",
+    "tape": "^5.0.0",
     "tinyify": "^2.0.0",
-    "xo": "^0.29.1"
+    "xo": "^0.30.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier --write . && xo --fix --ignore types",
@@ -73,6 +73,7 @@
     "prettier": true,
     "esnext": false,
     "ignore": [
+      "types",
       "mdast-util-definitions.js"
     ]
   },

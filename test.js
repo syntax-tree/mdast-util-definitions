@@ -19,17 +19,17 @@ test('mdast-util-definitions', function (t) {
   tree = remark().parse('[example]: https://example.com "Example"')
   getDefinition = definitions(tree)
 
-  t.deepEqual(
+  t.deepLooseEqual(
     getDefinition('example'),
     {
       type: 'definition',
       identifier: 'example',
       label: 'example',
-      url: 'https://example.com',
       title: 'Example',
+      url: 'https://example.com',
       position: {
-        start: {column: 1, line: 1, offset: 0},
-        end: {column: 41, line: 1, offset: 40},
+        start: {line: 1, column: 1, offset: 0},
+        end: {line: 1, column: 41, offset: 40},
         indent: []
       }
     },
@@ -41,17 +41,17 @@ test('mdast-util-definitions', function (t) {
   tree = remark().parse('[__proto__]: https://proto.com "Proto"')
   getDefinition = definitions(tree)
 
-  t.deepEqual(
+  t.deepLooseEqual(
     getDefinition('__proto__'),
     {
       type: 'definition',
       identifier: '__proto__',
       label: '__proto__',
-      url: 'https://proto.com',
       title: 'Proto',
+      url: 'https://proto.com',
       position: {
-        start: {column: 1, line: 1, offset: 0},
-        end: {column: 39, line: 1, offset: 38},
+        start: {line: 1, column: 1, offset: 0},
+        end: {line: 1, column: 39, offset: 38},
         indent: []
       }
     },
