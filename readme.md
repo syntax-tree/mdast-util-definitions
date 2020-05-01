@@ -20,6 +20,12 @@ Supports funky keys, like `__proto__` or `toString`.
 npm install mdast-util-definitions
 ```
 
+[npm][] with [TypeScript][] support:
+
+```sh
+npm install mdast-util-definitions @types/mdast
+```
+
 ## Use
 
 ```js
@@ -122,6 +128,8 @@ abide by its terms.
 [author]: https://wooorm.com
 
 [npm]: https://docs.npmjs.com/cli/install
+
+[typescript]: https://www.typescriptlang.org/
 
 [contributing]: https://github.com/syntax-tree/.github/blob/master/contributing.md
 
