@@ -39,16 +39,16 @@
     "browserify": "^16.0.0",
     "dtslint": "^3.0.0",
     "nyc": "^15.0.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.0.0",
     "remark": "^12.0.0",
     "remark-cli": "^8.0.0",
     "remark-preset-wooorm": "^7.0.0",
     "tape": "^5.0.0",
     "tinyify": "^2.0.0",
-    "xo": "^0.30.0"
+    "xo": "^0.32.0"
   },
   "scripts": {
-    "format": "remark . -qfo && prettier --write . && xo --fix --ignore types",
+    "format": "remark . -qfo && prettier . --write && xo --fix --ignore types",
     "build-bundle": "browserify . -s mdastUtilDefinitions > mdast-util-definitions.js",
     "build-mangle": "browserify . -s mdastUtilDefinitions -p tinyify > mdast-util-definitions.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
