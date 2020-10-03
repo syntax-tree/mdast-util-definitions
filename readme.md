@@ -45,15 +45,12 @@ definition('foo')
 
 ## API
 
-### `definitions(node[, options])`
+### `definitions(tree)`
 
-Create a cache of all [definition][]s in [`node`][node].
+Create a cache of all [definition][]s in [`tree`][node].
 
-###### `options.commonmark`
-
-`boolean`, default: false — Turn on (`true`) to use CommonMark precedence:
-ignore definitions found later for duplicate definitions.
-The default behavior is to prefer the last found definition.
+Uses CommonMark precedence: prefers the first definitions for duplicate
+definitions.
 
 ###### Returns
 

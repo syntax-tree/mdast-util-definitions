@@ -73,14 +73,8 @@ test('mdast-util-definitions', function (t) {
 
   t.deepEqual(
     definitions(tree)('example').url,
-    'https://two.com',
-    'should prefer the last of duplicate definitions by default'
-  )
-
-  t.deepEqual(
-    definitions(tree, {commonmark: true})('example').url,
     'https://one.com',
-    'should prefer the first of duplicate definitions in commonmark mode'
+    'should prefer the first of duplicate definitions'
   )
 
   t.end()
