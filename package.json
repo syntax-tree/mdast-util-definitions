@@ -1,6 +1,6 @@
 {
   "name": "mdast-util-definitions",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "mdast utility to find definition nodes in a tree",
   "license": "MIT",
   "keywords": [
