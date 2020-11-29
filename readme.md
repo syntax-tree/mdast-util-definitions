@@ -94,9 +94,9 @@ abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/syntax-tree/mdast-util-definitions.svg
+[build-badge]: https://github.com/syntax-tree/mdast-util-definitions/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/syntax-tree/mdast-util-definitions
+[build]: https://github.com/syntax-tree/mdast-util-definitions/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/syntax-tree/mdast-util-definitions.svg
 
