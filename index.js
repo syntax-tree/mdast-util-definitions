@@ -2,17 +2,12 @@
 
 var visit = require('unist-util-visit')
 
-module.exports = getDefinitionFactory
+module.exports = createGetDefinition
 
 var own = {}.hasOwnProperty
 
 // Get a definition in `node` by `identifier`.
-function getDefinitionFactory(node, options) {
-  return getterFactory(gather(node, options))
-}
-
-// Gather all definitions in `node`
-function gather(node) {
+function createGetDefinition(node) {
   var cache = {}
 
   if (!node || !node.type) {
@@ -21,27 +16,22 @@ function gather(node) {
 
   visit(node, 'definition', ondefinition)
 
-  return cache
+  return getDefinition
 
   function ondefinition(definition) {
-    var id = normalise(definition.identifier)
-    if (!own.call(cache, id)) {
+    var id = clean(definition.identifier)
+    if (id && !own.call(cache, id)) {
       cache[id] = definition
     }
   }
-}
-
-// Factory to get a node from the given definition-cache.
-function getterFactory(cache) {
-  return getter
 
   // Get a node from the bound definition-cache.
-  function getter(identifier) {
-    var id = identifier && normalise(identifier)
+  function getDefinition(identifier) {
+    var id = clean(identifier)
     return id && own.call(cache, id) ? cache[id] : null
   }
 }
 
-function normalise(identifier) {
-  return identifier.toUpperCase()
+function clean(value) {
+  return String(value || '').toUpperCase()
 }

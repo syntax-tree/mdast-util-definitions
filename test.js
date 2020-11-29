@@ -5,7 +5,6 @@ var remark = require('remark')
 var definitions = require('.')
 
 test('mdast-util-definitions', function (t) {
-  var getDefinition
   var tree
 
   t.throws(
@@ -17,10 +16,9 @@ test('mdast-util-definitions', function (t) {
   )
 
   tree = remark().parse('[example]: https://example.com "Example"')
-  getDefinition = definitions(tree)
 
   t.deepLooseEqual(
-    getDefinition('example'),
+    definitions(tree)('example'),
     {
       type: 'definition',
       identifier: 'example',
@@ -35,13 +33,12 @@ test('mdast-util-definitions', function (t) {
     'should return a definition'
   )
 
-  t.equal(getDefinition('foo'), null, 'should return null when not found')
+  t.equal(definitions(tree)('foo'), null, 'should return null when not found')
 
   tree = remark().parse('[__proto__]: https://proto.com "Proto"')
-  getDefinition = definitions(tree)
 
   t.deepLooseEqual(
-    getDefinition('__proto__'),
+    definitions(tree)('__proto__'),
     {
       type: 'definition',
       identifier: '__proto__',
@@ -60,7 +57,7 @@ test('mdast-util-definitions', function (t) {
   t.equal({}.type, undefined, 'should not polute the prototype')
 
   t.deepEqual(
-    getDefinition('toString'),
+    definitions(tree)('toString'),
     null,
     'should work on weird identifiers when not found'
   )
@@ -73,6 +70,12 @@ test('mdast-util-definitions', function (t) {
     definitions(tree)('example').url,
     'https://one.com',
     'should prefer the first of duplicate definitions'
+  )
+
+  t.deepEqual(
+    definitions(tree)(''),
+    null,
+    'should not return something for a missing identifier'
   )
 
   t.end()
