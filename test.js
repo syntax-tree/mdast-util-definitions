@@ -29,8 +29,7 @@ test('mdast-util-definitions', function (t) {
       url: 'https://example.com',
       position: {
         start: {line: 1, column: 1, offset: 0},
-        end: {line: 1, column: 41, offset: 40},
-        indent: []
+        end: {line: 1, column: 41, offset: 40}
       }
     },
     'should return a definition'
@@ -51,8 +50,7 @@ test('mdast-util-definitions', function (t) {
       url: 'https://proto.com',
       position: {
         start: {line: 1, column: 1, offset: 0},
-        end: {line: 1, column: 39, offset: 38},
-        indent: []
+        end: {line: 1, column: 39, offset: 38}
       }
     },
     'should work on weird identifiers'
