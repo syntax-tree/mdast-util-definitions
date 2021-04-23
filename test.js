@@ -1,12 +1,18 @@
+/**
+ * @typedef {import('unist').Node} Node
+ */
+
 import test from 'tape'
 import remark from 'remark'
 import {definitions} from './index.js'
 
 test('mdast-util-definitions', function (t) {
+  /** @type {Node} */
   var tree
 
   t.throws(
     function () {
+      // @ts-ignore runtime
       definitions()
     },
     /mdast-util-definitions expected node/,
@@ -52,7 +58,7 @@ test('mdast-util-definitions', function (t) {
   )
 
   /* eslint-disable-next-line no-use-extend-native/no-use-extend-native */
-  t.equal({}.type, undefined, 'should not polute the prototype')
+  t.equal({}.type, undefined, 'should not polute the prototype') // type-coverage:ignore-line
 
   t.deepEqual(
     definitions(tree)('toString'),
