@@ -1,8 +1,5 @@
 .DS_Store
 *.log
-.nyc_output/
 coverage/
 node_modules/
-mdast-util-definitions.js
-mdast-util-definitions.min.js
 yarn.lock

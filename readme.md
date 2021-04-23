@@ -14,36 +14,36 @@ Supports funky keys, like `__proto__` or `toString`.
 
 ## Install
 
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
+
 [npm][]:
 
 ```sh
 npm install mdast-util-definitions
 ```
 
-[npm][] with [TypeScript][] support:
-
-```sh
-npm install mdast-util-definitions @types/mdast
-```
-
 ## Use
 
 ```js
-var remark = require('remark')
-var definitions = require('mdast-util-definitions')
+import remark from 'remark'
+import {definitions} from 'mdast-util-definitions'
 
-var ast = remark().parse('[example]: https://example.com "Example"')
+var tree = remark().parse('[example]: https://example.com "Example"')
 
-var definition = definitions(ast)
+var definition = definitions(tree)
 
 definition('example')
-// => {type: 'definition', 'title': 'Example', ...}
+// => {type: 'definition', 'title': 'Example', …}
 
 definition('foo')
 // => null
 ```
 
 ## API
+
+This package exports the following identifiers: `definitions`.
+There is no default export.
 
 ### `definitions(tree)`
 
@@ -125,8 +125,6 @@ abide by its terms.
 [author]: https://wooorm.com
 
 [npm]: https://docs.npmjs.com/cli/install
-
-[typescript]: https://www.typescriptlang.org/
 
 [contributing]: https://github.com/syntax-tree/.github/blob/HEAD/contributing.md
 

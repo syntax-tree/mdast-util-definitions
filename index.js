@@ -1,13 +1,9 @@
-'use strict'
-
-var visit = require('unist-util-visit')
-
-module.exports = createGetDefinition
+import {visit} from 'unist-util-visit'
 
 var own = {}.hasOwnProperty
 
 // Get a definition in `node` by `identifier`.
-function createGetDefinition(node) {
+export function definitions(node) {
   var cache = {}
 
   if (!node || !node.type) {
