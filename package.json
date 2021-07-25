@@ -69,10 +69,7 @@
     "trailingComma": "none"
   },
   "xo": {
-    "prettier": true,
-    "rules": {
-      "capitalized-comments": "off"
-    }
+    "prettier": true
   },
   "remarkConfig": {
     "plugins": [

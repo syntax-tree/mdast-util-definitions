@@ -57,8 +57,11 @@ test('mdast-util-definitions', (t) => {
     'should work on weird identifiers'
   )
 
-  /* eslint-disable-next-line no-use-extend-native/no-use-extend-native */
-  t.equal({}.type, undefined, 'should not polute the prototype') // type-coverage:ignore-line
+  /* eslint-disable no-use-extend-native/no-use-extend-native */
+  // @ts-expect-error: yes.
+  // type-coverage:ignore-next-line
+  t.equal({}.type, undefined, 'should not polute the prototype')
+  /* eslint-enable no-use-extend-native/no-use-extend-native */
 
   t.deepEqual(
     definitions(tree)('toString'),
@@ -70,8 +73,10 @@ test('mdast-util-definitions', (t) => {
     '[example]: https://one.com\n[example]: https://two.com'
   )
 
+  const example = definitions(tree)('example')
+
   t.deepEqual(
-    definitions(tree)('example').url,
+    example && example.url,
     'https://one.com',
     'should prefer the first of duplicate definitions'
   )
