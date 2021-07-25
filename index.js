@@ -6,7 +6,7 @@
 
 import {visit} from 'unist-util-visit'
 
-var own = {}.hasOwnProperty
+const own = {}.hasOwnProperty
 
 /**
  *
@@ -14,7 +14,7 @@ var own = {}.hasOwnProperty
  */
 export function definitions(node) {
   /** @type {Object.<string, Definition>} */
-  var cache = Object.create(null)
+  const cache = Object.create(null)
 
   if (!node || !node.type) {
     throw new Error('mdast-util-definitions expected node')
@@ -26,7 +26,7 @@ export function definitions(node) {
 
   /** @type {DefinitionVisitor} */
   function ondefinition(definition) {
-    var id = clean(definition.identifier)
+    const id = clean(definition.identifier)
     if (id && !own.call(cache, id)) {
       cache[id] = definition
     }
@@ -39,7 +39,7 @@ export function definitions(node) {
    * @returns {Definition|null}
    */
   function getDefinition(identifier) {
-    var id = clean(identifier)
+    const id = clean(identifier)
     return id && own.call(cache, id) ? cache[id] : null
   }
 }

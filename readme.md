@@ -26,12 +26,12 @@ npm install mdast-util-definitions
 ## Use
 
 ```js
-import remark from 'remark'
+import {remark} from 'remark'
 import {definitions} from 'mdast-util-definitions'
 
-var tree = remark().parse('[example]: https://example.com "Example"')
+const tree = remark().parse('[example]: https://example.com "Example"')
 
-var definition = definitions(tree)
+const definition = definitions(tree)
 
 definition('example')
 // => {type: 'definition', 'title': 'Example', …}

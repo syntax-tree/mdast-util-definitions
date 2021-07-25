@@ -6,12 +6,12 @@ import test from 'tape'
 import remark from 'remark'
 import {definitions} from './index.js'
 
-test('mdast-util-definitions', function (t) {
+test('mdast-util-definitions', (t) => {
   /** @type {Node} */
-  var tree
+  let tree
 
   t.throws(
-    function () {
+    () => {
       // @ts-ignore runtime
       definitions()
     },
