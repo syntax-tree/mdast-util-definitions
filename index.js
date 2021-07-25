@@ -1,5 +1,5 @@
 /**
- * @typedef {import('unist').Node} Node
+ * @typedef {import('mdast').Root|import('mdast').Content} Node
  * @typedef {import('mdast').Definition} Definition
  * @typedef {import('unist-util-visit').Visitor<Definition>} DefinitionVisitor
  */

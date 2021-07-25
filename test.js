@@ -1,5 +1,5 @@
 /**
- * @typedef {import('unist').Node} Node
+ * @typedef {import('mdast').Root|import('mdast').Content} Node
  */
 
 import test from 'tape'
@@ -12,14 +12,16 @@ test('mdast-util-definitions', (t) => {
 
   t.throws(
     () => {
-      // @ts-ignore runtime
+      // @ts-expect-error runtime
       definitions()
     },
     /mdast-util-definitions expected node/,
     'should fail without node'
   )
 
-  tree = remark().parse('[example]: https://example.com "Example"')
+  tree = /** @type {Node} */ (
+    remark().parse('[example]: https://example.com "Example"')
+  )
 
   t.deepLooseEqual(
     definitions(tree)('example'),
@@ -39,7 +41,9 @@ test('mdast-util-definitions', (t) => {
 
   t.equal(definitions(tree)('foo'), null, 'should return null when not found')
 
-  tree = remark().parse('[__proto__]: https://proto.com "Proto"')
+  tree = /** @type {Node} */ (
+    remark().parse('[__proto__]: https://proto.com "Proto"')
+  )
 
   t.deepLooseEqual(
     definitions(tree)('__proto__'),
@@ -69,8 +73,8 @@ test('mdast-util-definitions', (t) => {
     'should work on weird identifiers when not found'
   )
 
-  tree = remark().parse(
-    '[example]: https://one.com\n[example]: https://two.com'
+  tree = /** @type {Node} */ (
+    remark().parse('[example]: https://one.com\n[example]: https://two.com')
   )
 
   const example = definitions(tree)('example')
