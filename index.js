@@ -1,7 +1,6 @@
 /**
  * @typedef {import('mdast').Root|import('mdast').Content} Node
  * @typedef {import('mdast').Definition} Definition
- * @typedef {import('unist-util-visit').Visitor<Definition>} DefinitionVisitor
  */
 
 import {visit} from 'unist-util-visit'
@@ -20,17 +19,14 @@ export function definitions(node) {
     throw new Error('mdast-util-definitions expected node')
   }
 
-  visit(node, 'definition', ondefinition)
-
-  return getDefinition
-
-  /** @type {DefinitionVisitor} */
-  function ondefinition(definition) {
+  visit(node, 'definition', (definition) => {
     const id = clean(definition.identifier)
     if (id && !own.call(cache, id)) {
       cache[id] = definition
     }
-  }
+  })
+
+  return getDefinition
 
   /**
    * Get a node from the bound definition-cache.
