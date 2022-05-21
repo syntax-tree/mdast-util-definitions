@@ -8,11 +8,14 @@ import {visit} from 'unist-util-visit'
 const own = {}.hasOwnProperty
 
 /**
+ * Find definitions in `node`.
+ * Uses CommonMark precedence, which means that earlier definitions are
+ * preferred over duplicate later definitions.
  *
  * @param {Node} node
  */
 export function definitions(node) {
-  /** @type {Object.<string, Definition>} */
+  /** @type {Record<string, Definition>} */
   const cache = Object.create(null)
 
   if (!node || !node.type) {
@@ -26,15 +29,15 @@ export function definitions(node) {
     }
   })
 
-  return getDefinition
+  return definition
 
   /**
-   * Get a node from the bound definition-cache.
+   * Get a node from the bound definition cache.
    *
    * @param {string} identifier
    * @returns {Definition|null}
    */
-  function getDefinition(identifier) {
+  function definition(identifier) {
     const id = clean(identifier)
     return id && own.call(cache, id) ? cache[id] : null
   }
