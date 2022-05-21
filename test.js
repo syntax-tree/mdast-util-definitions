@@ -3,7 +3,7 @@
  */
 
 import test from 'tape'
-import remark from 'remark'
+import {remark} from 'remark'
 import {definitions} from './index.js'
 
 test('mdast-util-definitions', (t) => {
