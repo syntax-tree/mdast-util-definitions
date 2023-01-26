@@ -2,8 +2,15 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {fromMarkdown} from 'mdast-util-from-markdown'
 import {definitions} from './index.js'
+import * as mod from './index.js'
 
-test('mdast-util-definitions', () => {
+test('definitions', () => {
+  assert.deepEqual(
+    Object.keys(mod).sort(),
+    ['definitions'],
+    'should expose the public api'
+  )
+
   assert.throws(
     () => {
       // @ts-expect-error runtime
