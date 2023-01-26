@@ -1,16 +1,10 @@
-/**
- * @typedef {import('mdast').Root|import('mdast').Content} Node
- */
-
-import test from 'tape'
-import {remark} from 'remark'
+import assert from 'node:assert/strict'
+import test from 'node:test'
+import {fromMarkdown} from 'mdast-util-from-markdown'
 import {definitions} from './index.js'
 
-test('mdast-util-definitions', (t) => {
-  /** @type {Node} */
-  let tree
-
-  t.throws(
+test('mdast-util-definitions', () => {
+  assert.throws(
     () => {
       // @ts-expect-error runtime
       definitions()
@@ -19,12 +13,10 @@ test('mdast-util-definitions', (t) => {
     'should fail without node'
   )
 
-  tree = /** @type {Node} */ (
-    remark().parse('[example]: https://example.com "Example"')
-  )
-
-  t.deepLooseEqual(
-    definitions(tree)('example'),
+  assert.deepEqual(
+    definitions(fromMarkdown('[example]: https://example.com "Example"'))(
+      'example'
+    ),
     {
       type: 'definition',
       identifier: 'example',
@@ -39,14 +31,18 @@ test('mdast-util-definitions', (t) => {
     'should return a definition'
   )
 
-  t.equal(definitions(tree)('foo'), null, 'should return null when not found')
-
-  tree = /** @type {Node} */ (
-    remark().parse('[__proto__]: https://proto.com "Proto"')
+  assert.equal(
+    definitions(fromMarkdown('[example]: https://example.com "Example"'))(
+      'foo'
+    ),
+    null,
+    'should return null when not found'
   )
 
-  t.deepLooseEqual(
-    definitions(tree)('__proto__'),
+  assert.deepEqual(
+    definitions(fromMarkdown('[__proto__]: https://proto.com "Proto"'))(
+      '__proto__'
+    ),
     {
       type: 'definition',
       identifier: '__proto__',
@@ -64,32 +60,32 @@ test('mdast-util-definitions', (t) => {
   /* eslint-disable no-use-extend-native/no-use-extend-native */
   // @ts-expect-error: yes.
   // type-coverage:ignore-next-line
-  t.equal({}.type, undefined, 'should not polute the prototype')
+  assert.equal({}.type, undefined, 'should not polute the prototype')
   /* eslint-enable no-use-extend-native/no-use-extend-native */
 
-  t.deepEqual(
-    definitions(tree)('toString'),
+  assert.deepEqual(
+    definitions(fromMarkdown('[__proto__]: https://proto.com "Proto"'))(
+      'toString'
+    ),
     null,
     'should work on weird identifiers when not found'
   )
 
-  tree = /** @type {Node} */ (
-    remark().parse('[example]: https://one.com\n[example]: https://two.com')
-  )
+  const example = definitions(
+    fromMarkdown('[example]: https://one.com\n[example]: https://two.com')
+  )('example')
 
-  const example = definitions(tree)('example')
-
-  t.deepEqual(
+  assert.deepEqual(
     example && example.url,
     'https://one.com',
     'should prefer the first of duplicate definitions'
   )
 
-  t.deepEqual(
-    definitions(tree)(''),
+  assert.deepEqual(
+    definitions(
+      fromMarkdown('[example]: https://one.com\n[example]: https://two.com')
+    )(''),
     null,
     'should not return something for a missing identifier'
   )
-
-  t.end()
 })
