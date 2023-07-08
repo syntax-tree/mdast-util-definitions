@@ -6,16 +6,17 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {fromMarkdown} from 'mdast-util-from-markdown'
 import {definitions} from './index.js'
-import * as mod from './index.js'
 
 test('definitions', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(mod).sort(), ['definitions'])
+    assert.deepEqual(Object.keys(await import('./index.js')).sort(), [
+      'definitions'
+    ])
   })
 
   await t.test('should fail without node', async function () {
     assert.throws(function () {
-      // @ts-expect-error runtime
+      // @ts-expect-error: check that an error is thrown at runtime.
       definitions()
     }, /mdast-util-definitions expected node/)
   })
@@ -104,7 +105,6 @@ test('definitions', async function (t) {
 })
 
 /**
- *
  * @param {string} value
  * @returns {Root}
  */
