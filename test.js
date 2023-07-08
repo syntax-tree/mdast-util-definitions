@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('mdast').Root} Root
+ */
+
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {fromMarkdown} from 'mdast-util-from-markdown'
@@ -21,9 +25,7 @@ test('definitions', () => {
   )
 
   assert.deepEqual(
-    definitions(fromMarkdown('[example]: https://example.com "Example"'))(
-      'example'
-    ),
+    definitions(from('[example]: https://example.com "Example"'))('example'),
     {
       type: 'definition',
       identifier: 'example',
@@ -39,17 +41,13 @@ test('definitions', () => {
   )
 
   assert.equal(
-    definitions(fromMarkdown('[example]: https://example.com "Example"'))(
-      'foo'
-    ),
+    definitions(from('[example]: https://example.com "Example"'))('foo'),
     null,
     'should return null when not found'
   )
 
   assert.deepEqual(
-    definitions(fromMarkdown('[__proto__]: https://proto.com "Proto"'))(
-      '__proto__'
-    ),
+    definitions(from('[__proto__]: https://proto.com "Proto"'))('__proto__'),
     {
       type: 'definition',
       identifier: '__proto__',
@@ -71,15 +69,13 @@ test('definitions', () => {
   /* eslint-enable no-use-extend-native/no-use-extend-native */
 
   assert.deepEqual(
-    definitions(fromMarkdown('[__proto__]: https://proto.com "Proto"'))(
-      'toString'
-    ),
+    definitions(from('[__proto__]: https://proto.com "Proto"'))('toString'),
     null,
     'should work on weird identifiers when not found'
   )
 
   const example = definitions(
-    fromMarkdown('[example]: https://one.com\n[example]: https://two.com')
+    from('[example]: https://one.com\n[example]: https://two.com')
   )('example')
 
   assert.deepEqual(
@@ -89,10 +85,20 @@ test('definitions', () => {
   )
 
   assert.deepEqual(
-    definitions(
-      fromMarkdown('[example]: https://one.com\n[example]: https://two.com')
-    )(''),
+    definitions(from('[example]: https://one.com\n[example]: https://two.com'))(
+      ''
+    ),
     null,
     'should not return something for a missing identifier'
   )
 })
+
+/**
+ *
+ * @param {string} value
+ * @returns {Root}
+ */
+function from(value) {
+  // @ts-expect-error: To do: remove cast when `from-markdown` is released.
+  return fromMarkdown(value)
+}
