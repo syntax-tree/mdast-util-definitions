@@ -8,88 +8,98 @@ import {fromMarkdown} from 'mdast-util-from-markdown'
 import {definitions} from './index.js'
 import * as mod from './index.js'
 
-test('definitions', () => {
-  assert.deepEqual(
-    Object.keys(mod).sort(),
-    ['definitions'],
-    'should expose the public api'
-  )
+test('definitions', async function (t) {
+  await t.test('should expose the public api', async function () {
+    assert.deepEqual(Object.keys(mod).sort(), ['definitions'])
+  })
 
-  assert.throws(
-    () => {
+  await t.test('should fail without node', async function () {
+    assert.throws(function () {
       // @ts-expect-error runtime
       definitions()
-    },
-    /mdast-util-definitions expected node/,
-    'should fail without node'
-  )
+    }, /mdast-util-definitions expected node/)
+  })
 
-  assert.deepEqual(
-    definitions(from('[example]: https://example.com "Example"'))('example'),
-    {
-      type: 'definition',
-      identifier: 'example',
-      label: 'example',
-      title: 'Example',
-      url: 'https://example.com',
-      position: {
-        start: {line: 1, column: 1, offset: 0},
-        end: {line: 1, column: 41, offset: 40}
+  await t.test('should return a definition', async function () {
+    assert.deepEqual(
+      definitions(from('[example]: https://example.com "Example"'))('example'),
+      {
+        type: 'definition',
+        identifier: 'example',
+        label: 'example',
+        title: 'Example',
+        url: 'https://example.com',
+        position: {
+          start: {line: 1, column: 1, offset: 0},
+          end: {line: 1, column: 41, offset: 40}
+        }
       }
-    },
-    'should return a definition'
-  )
+    )
+  })
 
-  assert.equal(
-    definitions(from('[example]: https://example.com "Example"'))('foo'),
-    null,
-    'should return null when not found'
-  )
+  await t.test('should return null when not found', async function () {
+    assert.equal(
+      definitions(from('[example]: https://example.com "Example"'))('foo'),
+      null
+    )
+  })
 
-  assert.deepEqual(
-    definitions(from('[__proto__]: https://proto.com "Proto"'))('__proto__'),
-    {
-      type: 'definition',
-      identifier: '__proto__',
-      label: '__proto__',
-      title: 'Proto',
-      url: 'https://proto.com',
-      position: {
-        start: {line: 1, column: 1, offset: 0},
-        end: {line: 1, column: 39, offset: 38}
+  await t.test('should work on weird identifiers', async function () {
+    assert.deepEqual(
+      definitions(from('[__proto__]: https://proto.com "Proto"'))('__proto__'),
+      {
+        type: 'definition',
+        identifier: '__proto__',
+        label: '__proto__',
+        title: 'Proto',
+        url: 'https://proto.com',
+        position: {
+          start: {line: 1, column: 1, offset: 0},
+          end: {line: 1, column: 39, offset: 38}
+        }
       }
-    },
-    'should work on weird identifiers'
+    )
+  })
+
+  await t.test('should not polute the prototype', async function () {
+    /* eslint-disable no-use-extend-native/no-use-extend-native */
+    // @ts-expect-error: yes.
+    // type-coverage:ignore-next-line
+    assert.equal({}.type, undefined)
+    /* eslint-enable no-use-extend-native/no-use-extend-native */
+  })
+
+  await t.test(
+    'should work on weird identifiers when not found',
+    async function () {
+      assert.deepEqual(
+        definitions(from('[__proto__]: https://proto.com "Proto"'))('toString'),
+        null
+      )
+    }
   )
 
-  /* eslint-disable no-use-extend-native/no-use-extend-native */
-  // @ts-expect-error: yes.
-  // type-coverage:ignore-next-line
-  assert.equal({}.type, undefined, 'should not polute the prototype')
-  /* eslint-enable no-use-extend-native/no-use-extend-native */
+  await t.test(
+    'should prefer the first of duplicate definitions',
+    async function () {
+      const example = definitions(
+        from('[example]: https://one.com\n[example]: https://two.com')
+      )('example')
 
-  assert.deepEqual(
-    definitions(from('[__proto__]: https://proto.com "Proto"'))('toString'),
-    null,
-    'should work on weird identifiers when not found'
+      assert.deepEqual(example && example.url, 'https://one.com')
+    }
   )
 
-  const example = definitions(
-    from('[example]: https://one.com\n[example]: https://two.com')
-  )('example')
-
-  assert.deepEqual(
-    example && example.url,
-    'https://one.com',
-    'should prefer the first of duplicate definitions'
-  )
-
-  assert.deepEqual(
-    definitions(from('[example]: https://one.com\n[example]: https://two.com'))(
-      ''
-    ),
-    null,
-    'should not return something for a missing identifier'
+  await t.test(
+    'should not return something for a missing identifier',
+    async function () {
+      assert.deepEqual(
+        definitions(
+          from('[example]: https://one.com\n[example]: https://two.com')
+        )(''),
+        null
+      )
+    }
   )
 })
 
