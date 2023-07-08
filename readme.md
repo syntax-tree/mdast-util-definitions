@@ -48,14 +48,14 @@ npm install mdast-util-definitions
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {definitions} from 'https://esm.sh/mdast-util-definitions@5'
+import {definitions} from 'https://esm.sh/mdast-util-definitions@6'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {definitions} from 'https://esm.sh/mdast-util-definitions@5?bundle'
+  import {definitions} from 'https://esm.sh/mdast-util-definitions@6?bundle'
 </script>
 ```
 
