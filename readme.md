@@ -73,7 +73,7 @@ definition('example')
 // => {type: 'definition', 'title': 'Example', …}
 
 definition('foo')
-// => null
+// => undefined
 ```
 
 ## API
@@ -109,7 +109,7 @@ Get a definition by identifier (TypeScript type).
 ###### Returns
 
 Definition corresponding to `identifier` ([`Definition`][definition]) or
-`null`.
+`undefined`.
 
 ## Types
 

@@ -38,10 +38,10 @@ test('definitions', async function (t) {
     )
   })
 
-  await t.test('should return null when not found', async function () {
+  await t.test('should return `undefined` when not found', async function () {
     assert.equal(
       definitions(from('[example]: https://example.com "Example"'))('foo'),
-      null
+      undefined
     )
   })
 
@@ -75,7 +75,7 @@ test('definitions', async function (t) {
     async function () {
       assert.deepEqual(
         definitions(from('[__proto__]: https://proto.com "Proto"'))('toString'),
-        null
+        undefined
       )
     }
   )
@@ -98,7 +98,7 @@ test('definitions', async function (t) {
         definitions(
           from('[example]: https://one.com\n[example]: https://two.com')
         )(''),
-        null
+        undefined
       )
     }
   )
